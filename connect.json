@@ -1,0 +1,22 @@
+{
+    "name": "demo",
+    "config": {
+        "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+	"database.hostname": "192.168.1.197",
+        "database.port": "5432",
+        "database.user": "postgres",
+	"database.password": "123456789",
+        "database.dbname": "AdventureWorks",
+        "plugin.name": "pgoutput",
+        "database.server.name": "source",
+        "key.converter.schemas.enable": "false",
+        "value.converter.schemas.enable": "false",
+        "transforms": "unwrap",
+        "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+	"table.include.list": "public.adaniports",
+        "slot.name" : "dbz_sales_transaction_slot",
+             "topic.prefix":"spark"
+    }
+}
